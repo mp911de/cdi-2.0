@@ -11,7 +11,6 @@ This repository explains CDI 2.0 features using Weld 3.0.
     * [Dynamic Beans](src/main/java/cdi2/extension/afterbeandiscovery/AfterBeanDiscoveryExtension.java)
     * [Interceptors](src/main/java/cdi2/extension/interceptor/MyServiceFactory.java)
     * [Bean Modification](src/main/java/cdi2/extension/processannotatedtype/ProcessAnnotatedTypeExtension.java)
-    * [Bean Modification](src/main/java/cdi2/extension/processannotatedtype/ProcessAnnotatedTypeExtension.java)
     * [ObserverMethod Modification](src/main/java/cdi2/extension/processobserver/ProcessObserverMethodExtension.java)
 
 ## Links
