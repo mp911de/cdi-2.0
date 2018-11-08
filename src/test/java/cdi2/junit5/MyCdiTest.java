@@ -17,8 +17,6 @@ package cdi2.junit5;
 
 import static org.assertj.core.api.Assertions.*;
 
-import lombok.RequiredArgsConstructor;
-
 import javax.inject.Inject;
 
 import org.junit.jupiter.api.Test;
@@ -31,7 +29,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
  * @link https://github.com/BrynCooke/cdi-unit/issues/103
  */
 @ExtendWith(CdiExtension.class) // only bootstrap types in the same package.
-@RequiredArgsConstructor(onConstructor_ = @Inject)
 class MyCdiTest {
 
 	private final MyApplicationScopedDependency appScoped;
@@ -40,6 +37,12 @@ class MyCdiTest {
 	/* @Deprecated */
 	@Inject private MyApplicationScopedDependency myOtherAppScopedDependency;
 	@Inject private MyDefaultScopedDependency myOtherDefaultScopedDependency;
+
+	@Inject
+	public MyCdiTest(MyApplicationScopedDependency appScoped, MyDefaultScopedDependency defaultScoped) {
+		this.appScoped = appScoped;
+		this.defaultScoped = defaultScoped;
+	}
 
 	/**
 	 * Wiring should work.
@@ -50,7 +53,7 @@ class MyCdiTest {
 	}
 
 	/**
-	 * @ApplicationScoped should resolve always to the same dependency.
+	 * {@literal @ApplicationScoped} should resolve always to the same dependency.
 	 */
 	@Test
 	void shouldResolveToSameAppScopedDependency() {
@@ -58,7 +61,7 @@ class MyCdiTest {
 	}
 
 	/**
-	 * @Default scoped dependencies are instantiated on each dependency retrieval.
+	 * {@literal @Default} scoped dependencies are instantiated on each dependency retrieval.
 	 */
 	@Test
 	void shouldResolveToDifferentDefaultScopedDependency() {

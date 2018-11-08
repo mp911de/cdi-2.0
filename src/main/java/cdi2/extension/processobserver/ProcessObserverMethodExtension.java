@@ -15,11 +15,11 @@
  */
 package cdi2.extension.processobserver;
 
+import lombok.extern.log4j.Log4j2;
+
 import javax.enterprise.event.Observes;
 import javax.enterprise.inject.spi.Extension;
 import javax.enterprise.inject.spi.ProcessObserverMethod;
-
-import lombok.extern.log4j.Log4j2;
 
 /**
  * @author Mark Paluch
@@ -30,7 +30,7 @@ class ProcessObserverMethodExtension implements Extension {
     void onProcessObserverMethod(@Observes ProcessObserverMethod<?, ?> pom) {
 
         pom.configureObserverMethod().notifyWith(eventContext -> {
-            log.info(eventContext);
+			log.info("Haw haw! Overridden! " + eventContext);
         });
     }
 }

@@ -37,7 +37,8 @@ public class StandaloneApplication {
         try (SeContainer seContainer = SeContainerInitializer.newInstance()
                 .disableDiscovery()
                 .addPackages(Foo.class)
-                .addExtensions(new AfterBeanDiscoveryExtension())
+				.addBeanClasses(MyService.class)
+                //.addExtensions(new AfterBeanDiscoveryExtension())
                 .initialize()) {
 
             RequestContextController controller = seContainer.select(RequestContextController.class)
